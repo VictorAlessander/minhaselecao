@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.nome_completo }}
+        {{ form.matricula_extensionista }}
+        {{ form.email }}
+        {{ form.curso }}
+        {{ form.periodo }}
+        {{ form.workshop_extensionista  }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+{% endblock %}

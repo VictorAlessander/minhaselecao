@@ -1,0 +1,64 @@
+
+body {
+
+	/*background da pagina de login e fonte padrão em toda página*/
+	font-size: 15px;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+}
+.login-page{
+    background: url(../img/font-bg-fab.jpg);
+    background-repeat: no-repeat;
+    background-size:100%;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    background-size: cover;
+}
+main {
+	flex: 1 0 auto;
+}
+p{
+	color:  #1a237e;
+	text-align: center;
+	padding-top: 180px;
+	padding-bottom: 180px
+}
+/* size da logo*/
+.logo{
+	width: 150px;
+	height: 100px
+}
+.logo.mar{
+	margin: 20px;
+}
+/*Caracteristicas do container principal*/
+.cont-conf{
+	background-color: #ffffff;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.cont-conf.large{
+	width: 800px;
+
+}
+.cont-conf.large.g{
+	width: 400px;
+
+}
+.bg-esquerdo{
+	background: url(../img/coding.png);
+}
+.but-marg{
+	margin-top: 80px;
+}
+

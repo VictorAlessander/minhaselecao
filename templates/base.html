@@ -1,0 +1,117 @@
+ {% load static %}
+<!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+    <title>Sistema de imersão</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/normalize.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/dashboard.css' %}"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'css/rulesicons.css' %}"  media="screen,projection"/>
+
+    <!--Meu estilo-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <!--navbar -->
+    <!--navbar -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="{% url 'password_change' %}">Alterar Senha</a></li>
+      <li><a href="{% url 'logout' %}">Sair</a></li>
+     <!-- <li><a href="#">Perfil</a></li>-->
+    </ul>
+
+    <nav class="grey lighten-2 z-depth-0">
+      <div class="nav-wrapper ">
+        <ul class="right hide-on-med-and-down ">
+          <li><a href=""><i class="material-icons">email</i></a></li>
+          <li><a href="" class="dropdown-trigger " data-target="dropdown1"><i class=" material-icons">account_circle</i></a></li>
+        </ul>
+        <ul class="show-on-medium-and-down">
+          <li>
+            <a  data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--fim da navbar -->
+    <!--sidnav -->
+<div class="menu">
+    <ul id="slide-out" class=" col s12 left sidenav sidenav-fixed nav-content">
+        <div class="container center ">
+          <div class="row">
+            <div class="user-view">
+              <div class="container center col offset-s2">
+                <a href="#user" class="col s12"><img class="circle responsive-img" src="https://doity.com.br/media/doity/atividades/10748_atividade.jpeg"></a>
+              </div>
+              <div class="col s12">
+                <a><span class="white-text name">Nome do Usuário</span></a>
+                <a><span class="white-text email">Função</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <li ><a href="{% url 'frequencia' %}"  class="white-text">
+            <i class="material-icons">check</i>Frequencia</a></li>
+
+         {% if user.is_staff %}
+        <li ><a href="{% url 'lista_workshop_admin' %}"  class="white-text">
+            <i class="material-icons">list</i>Cadastrar Workshop</a></li>
+        {% endif %}
+
+        <li ><a href="" class="white-text">
+            <i class="material-icons">assessment</i>Desempenho</a></li>
+
+        {% if user.is_staff %}
+        <li ><a href="" class="white-text">
+            <i class="material-icons md-dark">local_printshop</i>Relatório</a></li>
+        {% endif %}
+
+        <li ><a href="{% url 'cadastro_list' %}"  class="white-text">
+            <i class="material-icons">edit</i>Editar Dados</a></li>
+
+        {% if user.is_staff %}
+        <li ><a class='dropdown-trigger white-text' href="{% url 'users' %}" data-target='cancelar'>
+            <i class="material-icons">remove_circle</i>Cancelar Cadastro<i class="material-icons right">arrow_drop_down</i></a></li>
+        {% endif %}
+
+        {% if user.is_staff %}
+        <li ><a href=""  class="white-text">
+            <i class="material-icons">people</i>Gerar Equipes</a></li>
+        {% endif %}
+
+
+      </div>
+    </ul>
+    <ul  id='cancelar' class='col s12 left drop-sid dropdown-content'>
+        <li ><a href="{% url 'extensionista_list' %}" class="white-text">
+            <i class="material-icons md-dark">list</i>Extensionistas</a>
+        </li>
+        <li ><a href="{% url 'professor_list' %}" class="white-text">
+            <i class="material-icons md-dark">list</i>Veteranos</a>
+        </li>
+    </ul>
+
+
+    <!--Início do main contendo a base django-->
+
+    <main>
+        <div class="container margin-dash">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="{% static 'js/materialize.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static 'js/materialize.js' %}"></script>
+      <script src="{% static 'js/init.js' %}"></script>
+    </body>
+    </html>

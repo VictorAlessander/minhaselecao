@@ -1,0 +1,22 @@
+body {
+
+	/*background da pagina de login e fonte padrão em toda página*/
+	background-color: #f7f7f7; 
+	font-size: 12px;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+}
+main {
+	flex: 1 0 auto;
+
+}
+
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+     position: relative;
+     opacity: 1;
+}
+

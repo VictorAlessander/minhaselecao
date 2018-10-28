@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for extensionista in extensionista %}
+
+            <li>
+                <a>{{ extensionista.nome_completo }}</a>
+                 <a href="{% url 'extensionista_delete' extensionista.pk %}">Deletar</a>
+            </li>
+
+    {% endfor %}
+
+{% endblock %}

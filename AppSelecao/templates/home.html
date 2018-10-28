@@ -1,0 +1,85 @@
+{% extends "base_login.html" %}
+{% block content %}
+{% load static %}
+		<div class="bg">
+			<!--Inicio do container principal-->
+
+			<div class="container cont-conf large hide-on-med-and-down z-depth-2">
+
+			<!--Inicio da div que contem o formulário.
+				Obs: Formulário será mostrado para tablet e acima.-->
+
+				<div class="row" >
+
+					<div class="col  m6 bg-esquerdo">
+						<div class="row">
+							<div class="col m12">
+								<p>
+									<strong>
+										Imersão da Fábriaca de software <br>Do UBtech office Unipê
+										<br>Reafirmação de área para WorkShop
+									</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!--Inicio da div direitar que contem o formulário-->
+
+					<div class="col  m6">
+						<div class="row">
+
+							<!--Inicio da div que contem a logo-->
+
+							<div class="col s12 center-align logo mar">
+								<a href=""><img class="responsive-img logo" src="{% static 'img/logo.png' %}"></a>
+							</div>
+
+							<!--Fim da div que contem a logo-->
+
+						</div>
+						<div class="row mr-t">
+
+							<!--Inicio do formulário-->
+
+							<form class="col s12 offset-s2" action="." method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+								<div class="row ">
+								</div>
+								<div class="row ">
+									<div class="input-field col s8">
+										{{ form }}
+										<label for="Matricula">Matrícula:</label>
+									</div>
+								</div>
+								<div class="row but-marg">
+									<div class="col s10 right">
+										<button class="waves-effect waves-light btn-small" type="submit" >Entrar</button>
+									</div>
+									<div class="col s2 ">
+										<a href="{% url 'login' %}" class="waves-effect waves-light btn-small"  >Administrativo</a>
+									</div>
+								</div>
+							</form>
+							<div class="row center-align">
+								<div class="col s12">
+									{% if erro %}
+									<span>{{erro}}</span>
+									{% endif %}
+								</div>
+							</div>
+							<!--Fim do formulário-->
+
+						</div>
+					</div>
+
+					<!--Fim da div direitar que contem o formulário-->
+
+				</div>
+
+				<!--Fim do formulário para para telas de tablete para cima-->
+
+			</div>
+			<!--Fim do container principal-->
+		</div>
+{% endblock %}

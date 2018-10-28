@@ -1,0 +1,276 @@
+{% extends "base_forms.html" %}
+{% block content %}
+{% load static %}
+<div class="row">
+				<div class="col s12">
+					<div class="card">
+						<div class="card-title white-text  center-align">
+							<div class="col s12 blue darken-4">
+								<p>Confirmarção de dados e reafirmação de área</p>
+							</div>
+						</div>
+						<div class="card-content ">
+							<div class="row">
+								<form  method="POST" class="col s12" enctype="multipart/form-data" >
+                                    {% csrf_token %}
+                                    <div class="row"></div>
+                                    <div class="card-title white-text  center-align">
+                                        <div class="col s12 blue darken-4">
+                                            <p>Dados pessoais</p>
+                                        </div>
+                                    </div>
+                                    <div class="row"></div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.nome_completo}}
+											{{form.errors}}
+											<label  for="{{form.nome_completo.id_for_label}}" >Nome completo:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="input-field col s6">
+											{{form.telefone}}
+											{{form.errors}}
+											<label for="{{form.telefone.id_for_label}}">Telefone/Celular:</label>
+										</div>
+                                        <div class="input-field col s6">
+											{{form.email}}
+											{{form.errors}}
+											<label for="{{form.email.id_for_label}}">E-mail:</label>
+										</div>
+									</div>
+                                    <div class="row"></div>
+                                    <div class="card-title white-text  center-align">
+                                        <div class="col s12 blue darken-4">
+                                            <p>Dados Acadêmicos</p>
+                                        </div>
+                                    </div>
+                                    <div class="row"></div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.matricula_extensionista}}
+											{{form.errors}}
+											<label for="{{form.matricula_extensionista.id_for_label}}">Matrícula:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="input-field col s9">
+											{{form.curso}}
+											{{form.errors}}
+											<label for="{{form.curso.id_for_label}}">Curso:</label>
+										</div>
+                                        <div class="input-field col s3">
+											{{form.periodo}}
+											{{form.errors}}
+											<label for="{{form.periodo.id_for_label}}">Périodo:</label>
+										</div>
+									</div>
+                                     <div class="row"></div>
+                                    <div class="card-title white-text  center-align">
+                                        <div class="col s12 blue darken-4">
+                                            <p>Habilidades e interesses</p>
+                                        </div>
+                                    </div>
+                                    <div class="row"></div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.habilidade_dominio}}
+											{{form.errors}}
+											<label for="{{form.habilidade_dominio.id_for_label}}">Cite duas habilidades que você considera que é bom:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.habilidade_aprendizado}}
+											{{form.errors}}
+											<label for="{{form.habilidade_aprendizado.id_for_label}}">Cite duas habilidades que você considera que esta aprendendo:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.outras_habilidades}}
+											{{form.errors}}
+											<label for="{{form.outras_habilidades.id_for_label}}">Outras habilidades:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="input-field col s12">
+											{{form.experiencia_profissional}}
+											{{form.errors}}
+											<label for="{{form.experiencia_profissional.id_for_label}}">Resuma sua expreriência profissional:</label>
+										</div>
+									</div>
+                                    <div class="row">
+										<div class="col s4">
+											<label for="{{form.interesse_1.id_for_label}}">Gerente de Projetos:</label>
+											{{form.interesse_1}}
+											{{form.errors}}
+										</div>
+                                        <div class="col s4">
+											<label for="{{form.interesse_2.id_for_label}}">Analista de Requesitos:</label>
+											{{form.interesse_2}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.interesse_3.id_for_label}}">Desenvolvedor Front-End:</label>
+											{{form.interesse_3}}
+											{{form.errors}}
+										</div>
+									</div>
+                                    <div class="row">
+                                        <div class=" col s4">
+											<label for="{{form.interesse_4.id_for_label}}">Desenvolvedor Back-End:</label>
+											{{form.interesse_4}}
+											{{form.errors}}
+										</div>
+										<div class=" col s4">
+											<label for="{{form.interesse_5.id_for_label}}">Administrador de Banco de Dados:</label>
+											{{form.interesse_5}}
+											{{form.errors}}
+										</div>
+                                        <div class=" col s4">
+											<label for="{{form.interesse_6.id_for_label}}">Desenvolvedor de Jogos:</label>
+											{{form.interesse_6}}
+											{{form.errors}}
+										</div>
+									</div>
+
+                                    <div class="row">
+										<div class=" col s4">
+											<label for="{{form.interesse_7.id_for_label}}">Desenvolvedor de Jogos / Artista 2D, 3D:</label>
+											{{form.interesse_7}}
+											{{form.errors}}
+										</div>
+                                        <div class="col s4">
+											<label for="{{form.interesse_8.id_for_label}}">Desenvolvedor de Jogos / Designer de Interface:</label>
+											{{form.interesse_8}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.interesse_9.id_for_label}}">Engenheiro de Qualidade e Testes:</label>
+											{{form.interesse_9}}
+											{{form.errors}}
+										</div>
+									</div>
+                                    <div class="row">
+                                        <div class=" col s4">
+											<label for="{{form.interesse_10.id_for_label}}">Gerente de Configuração e Infra Estrutura:</label>
+											{{form.interesse_10}}
+											{{form.errors}}
+										</div>
+										<div class=" col s4">
+											<label for="{{form.interesse_11.id_for_label}}">Administrador de Redes:</label>
+											{{form.interesse_11}}
+											{{form.errors}}
+										</div>
+                                        <div class=" col s4">
+											<label for="{{form.interesse_12.id_for_label}}">Analista de Testes:</label>
+											{{form.interesse_12}}
+											{{form.errors}}
+										</div>
+									</div>
+                                    <div class="row">
+										<div class=" col s4">
+											<label for="{{form.interesse_13.id_for_label}}">Automatizador de Teste:</label>
+											{{form.interesse_13}}
+											{{form.errors}}
+										</div>
+                                        <div class=" col s4">
+											<label for="{{form.interesse_14.id_for_label}}">Testador:</label>
+											{{form.interesse_14}}
+											{{form.errors}}
+										</div>
+										<div class=" col s4">
+											<label for="{{form.interesse_15.id_for_label}}">Desenvolvedor de Chatboot:</label>
+											{{form.interesse_15}}
+											{{form.errors}}
+										</div>
+									</div>
+                                    <div class="row">
+                                        <div class=" col s4">
+											<label for="{{form.interesse_16.id_for_label}}">Analista de Dados e Business Intelligence:</label>
+											{{form.interesse_16}}
+											{{form.errors}}
+										</div>
+									</div>
+									<div class="row"></div>
+									<div class="card-title white-text  center-align">
+                                        <div class="col s12 blue darken-4">
+                                            <p>O que espera da fábrica</p>
+                                        </div>
+                                    </div>
+									<div class="row"></div>
+									<div class="row">
+										<div class="col s4">
+											<label for="{{form.espera_1.id_for_label}}">Desenvolvimento Profissional:</label>
+											{{form.espera_1}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.espera_2.id_for_label}}">Desenvolver uma ideia empreendedora:</label>
+											{{form.espera_2}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.espera_3.id_for_label}}">Montar um Negócio:</label>
+											{{form.espera_3}}
+											{{form.errors}}
+										</div>
+									</div>
+									<div class="row">
+										<div class=" col s4">
+											<label for="{{form.espera_4.id_for_label}}">Adquirir Prática:</label>
+											{{form.espera_4}}
+											{{form.errors}}
+										</div>
+										<div class=" col s4">
+											<label for="{{form.espera_5.id_for_label}}">Vivenciar Trabalho em Equipe:</label>
+											{{form.espera_5}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.espera_6.id_for_label}}">Conhecer como Funciona um Ambiente Empresarial:</label>
+											{{form.espera_6}}
+											{{form.errors}}
+										</div>
+									</div>
+									<div class="row">
+										<div class="col s4">
+											<label for="{{form.espera_7.id_for_label}}">Ampliar meu Networking:</label>
+											{{form.espera_7}}
+											{{form.errors}}
+										</div>
+										<div class="col s4">
+											<label for="{{form.espera_8.id_for_label}}">Participar de Produção Científica:</label>
+											{{form.espera_8}}
+											{{form.errors}}
+									</div>
+									<div class="row"></div>
+									<div class="card-title white-text  center-align">
+                                        <div class="col s12 blue darken-4">
+                                            <p>Reafirmação de área para workshop</p>
+                                        </div>
+                                    </div>
+									<div class="row"></div>
+									<div class="row">
+										<div class="input-field col s12">
+											{{form.workshop_extensionista }}
+											{{form.errors}}
+											<label for="{{form.workshop_extensionista.id_for_label}}">Workshop :</label>
+										</div>
+									</div>
+									<div class="row">
+
+										<div class="col s12 ">
+											<button type="submit" class="waves-effect waves-light btn-small right light-blue darken-4">Salvar</button>
+										</div>
+									</div>
+                                </form>
+							</div>
+						</div>
+						<div class="card-content grey lighten-2">
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base_forms.html" %}
+{% block content %}
+{% load static %}
+			<div class="row">
+				<div class="col s12">
+					<div class="card">
+						<div class="card-title white-text  center-align">
+							<div class="col s12 blue darken-4">
+								<p>Cadastro do veterano</p>
+							</div>
+						</div>
+						<div class="card-content ">
+							<div class="row">
+								<div class="col s3">
+								</div>
+								<form method="post" class="col s6">
+									{% csrf_token %}
+									<div class="row">
+
+									</div>
+									<div class="row">
+										<div class="input-field col s12 m6">
+											{{form.matricula}}
+											{{form.matricula.errors}}
+											<label for="{{form.matricula.id_for_label}}">Matrícula:</label>
+										</div>
+										<div class="input-field col s12 m6">
+											<input type="text" name="" value="" id="confirmmatriculaat">
+											<label for="confirmat">Confirme Matrícula</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s6">
+											{{form.first_name}}
+											<label for="{{form.first_name.id_for_label}}">Primeiro nome: </label>
+
+										</div>
+										<div class="input-field col s6">
+											{{ form.last_name }}
+											<label for="{{form.last_name.id_for_label}}">Segundo nome: </label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s12">
+											{{ form.email }}
+											<label for="{{form.email.id_for_label}}">E-mail:</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s6">
+											{{ form.password1 }}
+											{{form.password1.errors}}
+											<label for="{{form.password1.id_for_label}}">Senha:</label>
+										</div>
+										<div class="input-field col s6">
+											{{ form.password2 }}
+											{{form.password2.errors}}
+											<label for="{{form.password2.id_for_label}}">Confirmação de senha:</label>
+										</div>
+									</div>
+									<div class="row">
+
+									</div>
+									<div class="row">
+										<div class="col s12 ">
+											<button type="submit" class="waves-effect waves-light btn-small right light-blue darken-4" id="btcad" onclick="return Validate()">Criar</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="card-content grey lighten-2">
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}

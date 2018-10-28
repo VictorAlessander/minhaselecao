@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for workshop in workshop %}
+
+            <li>
+                <a>{{ workshop.nome_workshop }}</a>
+            </li>
+
+    {% endfor %}
+    <a href="{% url 'criar_workshop' %}">Criar</a>
+
+{% endblock %}
