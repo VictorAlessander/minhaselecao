@@ -63,11 +63,19 @@ class ExtensionistaBuscarForm(ModelForm):
         fields = ('matricula_extensionista', )
 
 
+
+class WorkshopForm(ModelForm):
+            class Meta:
+                model = Workshop
+                fields = ['nome_workshop']
+
+
 class FrequenciaWorkshopForm(ModelForm):
     class Meta:
         model = FrequenciaWorkshop
-        fields = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'segunda_saida', 'terca_saida', 'quarta_saida', 'quinta_saida', 'sexta_saida',
-                  'segunda_justificado', 'terca_justificado', 'quarta_justificado', 'quinta_justificado', 'sexta_justificado']
+        fields = ['segunda', 'segunda_saida','segunda_justificado',  'terca', 'terca_saida','terca_justificado',
+                  'quarta', 'quarta_saida','quarta_justificado', 'quinta', 'quinta_saida', 'quinta_justificado', 'sexta', 'sexta_saida',
+                    'sexta_justificado']
 
         widgets = {
             'segunda': forms.CheckboxInput(),
@@ -75,10 +83,33 @@ class FrequenciaWorkshopForm(ModelForm):
             'quarta': forms.CheckboxInput(),
             'quinta': forms.CheckboxInput(),
             'sexta': forms.CheckboxInput(),
+            'segunda_saida': forms.CheckboxInput(),
+            'terca_saida': forms.CheckboxInput(),
+            'quarta_saida': forms.CheckboxInput(),
+            'quinta_saida': forms.CheckboxInput(),
+            'sexta_saida': forms.CheckboxInput(),
+            'segunda_justificado': forms.CheckboxInput(),
+            'terca_justificado': forms.CheckboxInput(),
+            'quarta_justificado': forms.CheckboxInput(),
+            'quinta_justificado': forms.CheckboxInput(),
+            'sexta_justificado': forms.CheckboxInput(),
         }
 
 
-class WorkshopForm(ModelForm):
-    class Meta:
-        model = Workshop
-        fields = ['nome_workshop']
+
+        '''request.data [{
+            id: 1,
+            chamada: true
+         },
+            {
+                
+            }
+        ]
+        
+        for user in request.data:
+            usertarget = User.object.filter(id= user.id)
+            usertarget.chamada = user.chamada
+            usertarget.save()'''
+
+
+

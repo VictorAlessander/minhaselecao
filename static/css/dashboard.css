@@ -77,3 +77,9 @@ a:hover.linkcor{
 div.menu ul li:hover{
    background-color: #ffc107;
 }
+
+
+[type="checkbox"]:not(:checked), [type="radio"]:checked {
+     position: relative;
+     opacity: 1;
+}

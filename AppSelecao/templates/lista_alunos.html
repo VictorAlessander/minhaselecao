@@ -11,7 +11,7 @@
       </thead>
       <!--{% for aluno in aluno %}
         <tr>
-            <td>{{ aluno.nome_completo }}</td>
+            <td><a href="{% url 'frequencia_update' frequencia.pk %}">{{ aluno.nome_completo }}</a></td>
           <td>{{ aluno.matricula_extensionista }}</td>
         </tr>
       {% endfor %}-->
@@ -19,7 +19,7 @@
         <tr>
             <td>{{frequencia.frequencia_extensionista.nome_completo}}</td>
             <td>{{frequencia.frequencia_extensionista.workshop_extensionista.nome_workshop}}</td>
-            <td>{{frequenciaWorkshopForm.as_p}}</td>
+            <td>{{frequenciaWorkshopForm}}</td>
         </tr>
         {% endfor %}
     </table>

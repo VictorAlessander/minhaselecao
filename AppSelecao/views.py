@@ -91,8 +91,8 @@ def imersionista_update(request, id):
 
 @login_required()
 def listar_alunos(request, id):
-    #aluno = Extensionista.objects.filter(workshop_extensionista=id)
-    #workshop = get_object_or_404(Workshop, pk=id)
+    aluno = Extensionista.objects.filter(workshop_extensionista=id)
+    workshop = get_object_or_404(Workshop, pk=id)
     frequencias = FrequenciaWorkshop.objects.filter(frequencia_extensionista__workshop_extensionista=id)
     frequenciaWorkshopForm = FrequenciaWorkshopForm(request.POST or None)
 
@@ -226,3 +226,8 @@ def workshop_delete(request, id):
         return redirect('workshop_list')
 
     return render(request, 'extensionista_delete_confirm.html', {'workshop': workshop})
+
+
+# DEFINICOES PARA FREQUENCIA
+
+
