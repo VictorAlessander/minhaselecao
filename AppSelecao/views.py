@@ -87,6 +87,17 @@ def imersionista_update(request, id):
 
     return render(request, 'extensionista_form.html', {'form': form})
 
+# DEF PARA EDITAR DESEMPENHO DO IMERCIONISTA
+
+def desempenho(request, id):
+    desempenho = get_object_or_404(Extensionista, pk=id)
+    form = DesepenhoForm(request.POST or None, request.FILES or None, instance=desempenho)
+    if form.is_valid():
+        form.save()
+        return redirect('lista_workshop_desempenho')
+
+    return render(request, 'desempenho_form.html', {'form': form})
+
 # DEF QUE LISTA OS ALUNOS PELA SUA ESCOLHA DE WORKSHOP
 
 @login_required()

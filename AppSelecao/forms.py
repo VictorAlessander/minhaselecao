@@ -95,6 +95,15 @@ class FrequenciaWorkshopForm(ModelForm):
             'sexta_justificado': forms.CheckboxInput(),
         }
 
+class DesepenhoForm(ModelForm):
+    class Meta:
+        model = Extensionista
+        fields = ['desempenho', 'comentario']
+
+
+
+
+
 
 
         '''request.data [{
@@ -107,7 +116,7 @@ class FrequenciaWorkshopForm(ModelForm):
         ]
         
         for user in request.data:
-            usertarget = User.object.filter(id= user.id)
+            usertarget =    User.object.filter(id= user.id)
             usertarget.chamada = user.chamada
             usertarget.save()'''
 
