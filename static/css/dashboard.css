@@ -10,11 +10,15 @@ main {
 	flex: 1 0 auto;
 }
 
+
+/*Cor da sidebar*/
 .sidenav{
-	background-color: #2a3f54;
+	background-color: #2a4663;
 }
-.drop-sid{
-	background-color: #2a2f54;
+
+.colap-sid{
+	background-color: #1e344a;
+
 }
 
 nav{
@@ -23,25 +27,26 @@ nav{
 
 }
 
-
-
 nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 	height: 30px;
 	line-height: 30px;
 	color: #757575;
 }
 
-hr{
-	border-color: #607d8b; 
-}
-
 @media only screen and (min-width: 601px) {
-	nav a.sidenav-trigger, 
+	nav a.sidenav-trigger,
 	nav a.sidenav-tigger i,
 	nav .nav-wrapper i {
 		height: 30px !important;
 		line-height: 30px !important;
 	}
+
+hr{
+	border-color: #607d8b; 
+}
+
+.corHr{
+	border-color: #e0e0e0;
 }
 
 .linkcor{
@@ -52,20 +57,7 @@ a:hover.linkcor{
 	color:; red;
 }
 
-
-
-/*index2*/
-
-.corHr{
-	border-color: #e0e0e0;
-}
-
-.input-field {
-	position: relative;
-	margin-top: -1rem;
-	margin-left: -10px
-
-}
+/*alinhamento das páginas dentro da dashboard */
 .margin-dash{
     margin-left: 310px;
 }
@@ -73,13 +65,13 @@ a:hover.linkcor{
 .margin-dash-nomal{
     margin-left: 100px;
 }
-
-div.menu ul li:hover{
-   background-color: #ffc107;
+/*Alinhamento dos botões colapsados*/
+.margin-colap{
+    margin-left: 14px;
 }
 
 
-[type="checkbox"]:not(:checked), [type="radio"]:checked {
+[type="ckeckbok"]:not(:checked), [type="ckeckbox"]:checked {
      position: relative;
      opacity: 1;
 }

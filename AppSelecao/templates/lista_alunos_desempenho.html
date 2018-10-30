@@ -16,7 +16,7 @@
       </thead>
       {% for aluno in aluno %}
         <tr>
-            <td><a href="{% url 'desempenho_form' desempenho.pk %}">{{ aluno.nome_completo }}</a></td>
+            <td><a href="{% url 'desempenho_form' 2 %}">{{ aluno.nome_completo }}</a></td>
           <td>{{ aluno.matricula_extensionista }}</td>
         </tr>
       {% endfor %}

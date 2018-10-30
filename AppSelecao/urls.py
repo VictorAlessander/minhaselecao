@@ -22,5 +22,6 @@ urlpatterns = [
     path('criar_workshop/', criar_workshop, name='criar_workshop'),
     path('lista_workshop_desempenho/', listar_workshop_desempenho, name='listar_workshop_desempenho'),
     path('lista_alunos_workshop/<int:id>/', listar_alunos_desempenho, name='listar_alunos_desempenho'),
-    path('desempenho_form/<int:id>', desempenho, name='desempenho_form')
+    path('desempenho_form/<int:id>', desempenho, name='desempenho_form'),
+    path('deletar_workshop/<int:id>', workshop_delete, name='deletar_workshop')
 ]

@@ -223,10 +223,8 @@ def workshop_delete(request, id):
 
     if request.method == 'POST':
         workshop.delete()
-        return redirect('workshop_list')
+        return redirect('lista_workshop_admin')
 
     return render(request, 'extensionista_delete_confirm.html', {'workshop': workshop})
-
-
 
 
