@@ -91,21 +91,37 @@ def imersionista_update(request, id):
 
 def desempenho(request, id):
     desempenho = get_object_or_404(Extensionista, pk=id)
-    form = DesepenhoForm(request.POST or None, request.FILES or None, instance=desempenho)
+    form = DesmepenhoForm(request.POST or None, request.FILES or None, instance=desempenho)
+
     if form.is_valid():
         form.save()
-        return redirect('lista_workshop_desempenho')
+        return redirect('listar_workshop_desempenho')
 
     return render(request, 'desempenho_form.html', {'form': form})
+
+def listar_alunos_desempenho(request, id):
+    aluno = Extensionista.objects.filter(workshop_extensionista=id)
+    workshop = get_object_or_404(Workshop, pk=id)
+
+    return render(request, 'lista_alunos_desempenho.html', {'aluno': aluno, 'workshop': workshop})
+
+def listar_workshop_desempenho(request):
+    workshop = Workshop.objects.all
+    return render(request, 'listar_workshop_desempenho.html', {'workshop': workshop})
 
 # DEF QUE LISTA OS ALUNOS PELA SUA ESCOLHA DE WORKSHOP
 
 @login_required()
 def listar_alunos(request, id):
-    aluno = Extensionista.objects.filter(workshop_extensionista=id)
-    workshop = get_object_or_404(Workshop, pk=id)
+    #aluno = Extensionista.objects.filter(workshop_extensionista=id)
+    #workshop = get_object_or_404(Workshop, pk=id)
+    #frequencia = get_object_or_404(FrequenciaWorkshop, pk=id)
     frequencias = FrequenciaWorkshop.objects.filter(frequencia_extensionista__workshop_extensionista=id)
     frequenciaWorkshopForm = FrequenciaWorkshopForm(request.POST or None)
+
+    if frequenciaWorkshopForm.is_valid():
+        frequenciaWorkshopForm.save()
+        return redirect('index')
 
     #return render(request, 'lista_alunos.html', {'aluno': aluno, 'workshop': workshop})
     return render(request, 'lista_alunos.html', {'frequencias': frequencias, 'frequenciaWorkshopForm': frequenciaWorkshopForm})
@@ -129,32 +145,6 @@ def presenca(request, id):
         form.save()
         return redirect('lista')
     return render(request, '1.html', {'form': form})
-
-# DEF QUE EDITA O IMERSIONISTA E CRIA UMA ID EM FREQUENCIA
-
-
-def imersionista_update_teste(request, id):
-    extensionista = get_object_or_404(Extensionista, pk=id)
-    form = ExtensionistaForm(request.POST or None, request.FILES or None, instance=extensionista)
-    # form2 = FrequenciaForm(request.POST or None)
-    # if form.is_valid() and form2.is_valid():
-    if form.is_valid():
-
-
-        imersionista_criado = form.save()
-        # id_frequencia = imersionista_criado.pk
-        #frequencia_extensionista = imersionista_criado.pk
-
-        # imersionista_membro = form2.save(commit=False)
-        # imersionista_membro.frequencia = Frequencia(pk=id_frequencia)
-       # imersionista_membro.frequencia = Frequencia(pk=frequencia_extensionista)
-
-        # imersionista_membro.save()
-
-        return redirect('login')
-    # return render(request, 'extensionista_form.html', {'form': form}, {'form2': form2})
-    return render(request, 'extensionista_form.html', {'form': form})
-
 
 # PAGINA QUE MOSTRA OS USUARIOS CADASTRADOS
 
@@ -205,7 +195,6 @@ def extensionista_delete(request, id):
     return render(request, 'extensionista_delete_confirm.html', {'extensionista': extensionista})
 
 
-
 # DEF PARA CRIAR WORKSHOP
 
 
@@ -239,6 +228,5 @@ def workshop_delete(request, id):
     return render(request, 'extensionista_delete_confirm.html', {'workshop': workshop})
 
 
-# DEFINICOES PARA FREQUENCIA
 
 

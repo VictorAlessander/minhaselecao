@@ -6,6 +6,7 @@
             <li>
                 <a>{{ extensionista.nome_completo }}</a>
                 <a href="{% url 'cadastro_update' extensionista.pk %}">Editar</a>
+                <a href="{% url 'extensionista_delete' extensionista.pk %}">Deletar</a>
             </li>
 
     {% endfor %}

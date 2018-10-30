@@ -95,10 +95,14 @@ class FrequenciaWorkshopForm(ModelForm):
             'sexta_justificado': forms.CheckboxInput(),
         }
 
-class DesepenhoForm(ModelForm):
+class DesmepenhoForm(ModelForm):
     class Meta:
         model = Extensionista
         fields = ['desempenho', 'comentario']
+
+        widgets = {
+            'desempenho': forms.CheckboxInput(),
+        }
 
 
 

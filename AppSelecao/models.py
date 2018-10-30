@@ -130,7 +130,7 @@ class Extensionista(models.Model):
     espera_6 = models.CharField(max_length=200, verbose_name='Conhecer como Funciona um Ambiente Empresarial', null=True)
     espera_7 = models.CharField(max_length=200, verbose_name='Ampliar meu Networking', null=True)
     espera_8 = models.CharField(max_length=200, verbose_name='Participar de Produção Científica', null=True)
-    desempenho = models.BooleanField(null=True, Default=False, verbose_name='Destaque')
+    desempenho = models.BooleanField(null=True, default=False, verbose_name='Destaque')
     comentario = models.TextField(max_length=1000, verbose_name='Comentário')
 
 

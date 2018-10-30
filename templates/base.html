@@ -65,7 +65,7 @@
             <i class="material-icons">list</i>Cadastrar Workshop</a></li>
         {% endif %}
 
-        <li ><a href="" class="white-text">
+        <li ><a href="{% url 'listar_workshop_desempenho' %}" class="white-text">
             <i class="material-icons">assessment</i>Desempenho</a></li>
 
         {% if user.is_staff %}
