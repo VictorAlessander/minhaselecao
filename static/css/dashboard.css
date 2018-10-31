@@ -75,3 +75,8 @@ a:hover.linkcor{
      position: relative;
      opacity: 1;
 }
+
+[type="radio"]:not(:checked), [type="ckeckbox"]:checked {
+     position: relative;
+     opacity: 1;
+}

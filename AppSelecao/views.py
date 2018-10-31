@@ -89,15 +89,16 @@ def imersionista_update(request, id):
 
 # DEF PARA EDITAR DESEMPENHO DO IMERCIONISTA
 
-def desempenho(request, id):
-    desempenho = get_object_or_404(Extensionista, pk=id)
-    form = DesmepenhoForm(request.POST or None, request.FILES or None, instance=desempenho)
+def desempenho_update(request, id):
+    extensionista = get_object_or_404(Extensionista, pk=id)
+    aluno = Extensionista.objects.filter(id_extensionista=id)
+    form = DesmepenhoForm(request.POST or None, request.FILES or None, instance=extensionista)
 
     if form.is_valid():
         form.save()
         return redirect('listar_workshop_desempenho')
 
-    return render(request, 'desempenho_form.html', {'form': form})
+    return render(request, 'desempenho_form.html', {'form': form, 'aluno':aluno})
 
 def listar_alunos_desempenho(request, id):
     aluno = Extensionista.objects.filter(workshop_extensionista=id)
@@ -115,7 +116,6 @@ def listar_workshop_desempenho(request):
 def listar_alunos(request, id):
     #aluno = Extensionista.objects.filter(workshop_extensionista=id)
     #workshop = get_object_or_404(Workshop, pk=id)
-    #frequencia = get_object_or_404(FrequenciaWorkshop, pk=id)
     frequencias = FrequenciaWorkshop.objects.filter(frequencia_extensionista__workshop_extensionista=id)
     frequenciaWorkshopForm = FrequenciaWorkshopForm(request.POST or None)
 
