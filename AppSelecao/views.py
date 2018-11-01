@@ -89,42 +89,43 @@ def imersionista_update(request, id):
 
 # DEF PARA EDITAR DESEMPENHO DO IMERCIONISTA
 
+@login_required()
 def desempenho_update(request, id):
     extensionista = get_object_or_404(Extensionista, pk=id)
     aluno = Extensionista.objects.filter(id_extensionista=id)
+    aluno2 = Extensionista.objects.get(id_extensionista=id)
     form = DesmepenhoForm(request.POST or None, request.FILES or None, instance=extensionista)
 
     if form.is_valid():
         form.save()
         return redirect('listar_workshop_desempenho')
 
-    return render(request, 'desempenho_form.html', {'form': form, 'aluno':aluno})
+    return render(request, 'desempenho_form.html', {'form': form, 'aluno':aluno, 'aluno2':aluno2})
 
+@login_required()
 def listar_alunos_desempenho(request, id):
     aluno = Extensionista.objects.filter(workshop_extensionista=id)
     workshop = get_object_or_404(Workshop, pk=id)
 
     return render(request, 'lista_alunos_desempenho.html', {'aluno': aluno, 'workshop': workshop})
 
+@login_required()
 def listar_workshop_desempenho(request):
     workshop = Workshop.objects.all
     return render(request, 'listar_workshop_desempenho.html', {'workshop': workshop})
+
 
 # DEF QUE LISTA OS ALUNOS PELA SUA ESCOLHA DE WORKSHOP
 
 @login_required()
 def listar_alunos(request, id):
-    #aluno = Extensionista.objects.filter(workshop_extensionista=id)
-    #workshop = get_object_or_404(Workshop, pk=id)
-    frequencias = FrequenciaWorkshop.objects.filter(frequencia_extensionista__workshop_extensionista=id)
-    frequenciaWorkshopForm = FrequenciaWorkshopForm(request.POST or None)
+    aluno = Extensionista.objects.filter(workshop_extensionista=id)
+    workshop = get_object_or_404(Workshop, pk=id)
+    #frequencias = FrequenciaWorkshop.objects.filter(frequencia_extensionista__workshop_extensionista=id)
+    #frequenciaWorkshopForm = FrequenciaWorkshopForm(request.POST or None, request.FILES or None)
 
-    if frequenciaWorkshopForm.is_valid():
-        frequenciaWorkshopForm.save()
-        return redirect('index')
-
-    #return render(request, 'lista_alunos.html', {'aluno': aluno, 'workshop': workshop})
-    return render(request, 'lista_alunos.html', {'frequencias': frequencias, 'frequenciaWorkshopForm': frequenciaWorkshopForm})
+    return render(request, 'lista_alunos.html', {'aluno': aluno, 'workshop': workshop})
+    #return render(request, 'lista_alunos.html', {'frequencias': frequencias, 'frequenciaWorkshopForm': frequenciaWorkshopForm})
 
 
 # DEF QUE LISTA OS WORKSHOPS NA DASHBOARD DO SISTEMA
@@ -138,13 +139,14 @@ def listar_workshop(request):
 
 @login_required()
 def presenca(request, id):
-    presenca = get_object_or_404(FrequenciaWorkshop, pk=id)
-    form = FrequenciaWorkshopForm(request.POST or None, request.FILES or None, instance=presenca)
+    presenca = get_object_or_404(Extensionista, pk=id)
+    aluno = Extensionista.objects.filter(id_extensionista=id)
+    form = FrequenciaForm(request.POST or None, request.FILES or None, instance=presenca)
 
     if form.is_valid():
         form.save()
-        return redirect('lista')
-    return render(request, '1.html', {'form': form})
+        return redirect('frequencia')
+    return render(request, '1.html', {'form': form, 'aluno':aluno})
 
 # PAGINA QUE MOSTRA OS USUARIOS CADASTRADOS
 
@@ -226,5 +228,99 @@ def workshop_delete(request, id):
         return redirect('lista_workshop_admin')
 
     return render(request, 'extensionista_delete_confirm.html', {'workshop': workshop})
+
+
+# DEF PARA VISUALIZAÇÃO DO PERFIL
+
+@login_required()
+def perfil(request, id):
+    veterano = UserCadastro.objects.get(pk=id)
+    aluno = UserCadastro.objects.filter(id=veterano)
+
+    return render(request, 'perfil.html', {'veterano':veterano, 'aluno':aluno})
+
+
+def frequencia_nova(request, id):
+    alunos = FrequenciaWorkshop.objects.all()
+    dias = [{
+        'nome': 'segunda',
+        'id': 1
+    },
+        {
+            'nome': 'terca',
+            'id': 2
+        },
+        {
+            'nome': 'quarta',
+            'id': 3
+        }]
+
+    diatarget = None
+    for dia in dias:
+        if dia['id'] == id:
+            diatarget = dia
+
+
+    return render(request, 'frequencia_teste_2.html', {'alunos':alunos, 'dia': diatarget})
+
+def frequencia_dia(request):
+    dias = [{
+        'nome': 'segunda',
+        'id': 1
+    },
+        {
+            'nome': 'terca',
+            'id': 2
+        },
+        {
+            'nome': 'quarta',
+            'id': 3
+        }]
+
+    return render(request, 'frequencia_dia.html', {'dias': dias})
+
+
+def frequencia_oquequiser(request):
+
+    if request.method == 'POST':
+        dia = request.POST.get('dia');
+        alunos = request.POST.getlist('alunos')[0];
+        print(dia)
+        for aluno in alunos:
+            print(aluno)
+            # alunotarget = FrequenciaWorkshop.objects.filter(frequencia_extensionista=aluno['nome'])
+            # alunotarget[dia] = aluno.frequencia
+            # alunotarget.save();
+            # print(alunotarget)
+
+
+def equipes(resquest):
+    workshopsFilterTrue = {}
+    workshopsFilterFalse = {}
+
+    alunos = Extensionista.objects.all()
+    workshops = Workshop.objects.all()
+
+    for workshop in workshops:
+        if workshop.nome_workshop:
+            workshopsFilterTrue[workshop.nome_workshop] = []
+            workshopsFilterFalse[workshop.nome_workshop] = []
+
+    for aluno in alunos:
+        workshop = aluno.workshop_extensionista.nome_workshop
+        if aluno.desempenho == True:
+            workshopsFilterTrue[workshop].append(aluno)
+        else:
+            workshopsFilterFalse[workshop].append(aluno)
+
+    print(workshopsFilterTrue)
+    print(workshopsFilterFalse)
+
+    return render(resquest, 'equipe.html')
+
+
+
+
+
 
 

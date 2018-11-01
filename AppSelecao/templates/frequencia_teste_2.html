@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id="form">{% csrf_token %}
+    <h2>{{dia.nome}}</h2>
+    {% for aluno in alunos %}
+    <div data-target="aluno">
+        <label>
+            {{aluno.frequencia_extensionista}}
+        </label>
+        <input name="frequencia" id="{{aluno.frequencia_extensionista}}" type="checkbox" >
+        <input name="nome" id="Nome" type="hidden" value="{{aluno.frequencia_extensionista}}">
+    </div>
+    {% endfor %}
+    <button type="submit">Salvar</button>
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+    $( "#form" ).submit(function( event ) {
+
+  // Stop form from submitting normally
+  event.preventDefault();
+
+  // Get some values from elements on the page:
+  var $form = $( this );
+    alunosGroups = $form.find("div[data-target='aluno']");
+
+    csrf = $form.find( "input[name='csrfmiddlewaretoken']" ).val();
+    alunos = [];
+    console.log(csrf)
+    alunosGroups.each(function() {
+
+        var alunoGroup = $(this);
+        var aluno = alunoGroup.find( "input[name='nome']" ).val();
+        var frequencia = alunoGroup.find( "input[name='frequencia']" );
+
+        alunos.push({
+            "nome": aluno,
+            "frequencia": frequencia[0].checked
+        });
+
+    });
+
+  var data = {
+    alunos: alunos,
+    csrfmiddlewaretoken: csrf,
+    dia: "{{dia.nome}}"
+  };
+
+  $.post( "{% url 'frequenciateste2' %}", {
+    alunos: JSON.stringify(alunos),
+    dia: "{{dia.nome}}",
+    csrfmiddlewaretoken: csrf
+  } );
+
+});
+</script>
+
+</body>
+</html>

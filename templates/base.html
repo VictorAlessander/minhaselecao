@@ -41,7 +41,7 @@
     <!--fim da navbar -->
     <!--sidnav -->
 <div class="menu">
-    <ul id="slide-out" class=" col s12 left sidenav sidenav-fixed nav-content">
+    <ul id="slide-out" class=" col s12 left sidenav sidenav-fixed nav-content collapsible ">
         <div class="container center ">
           <div class="row">
             <div class="user-view">
@@ -56,47 +56,60 @@
           </div>
         </div>
         <hr>
-
-        <li ><a href="{% url 'frequencia' %}"  class="white-text">
-            <i class="material-icons">check</i>Frequencia</a></li>
-
+        <li>
+            <div class="collapsible-header margin-colap">
+                 <i class="material-icons">people</i><strong class="white-text margin-colap">Extensionistas</strong><i class="material-icons right">arrow_drop_down</i></a>
+            </div>
+            <div class="collapsible-body drop-sid">
+                <ul class="colap-sid">
+                    <li>
+                        <a href="{% url 'frequencia' %}"  class="white-text"><i class="material-icons white-text">check</i>frequência</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'listar_workshop_desempenho' %}" class="white-text"><i class="material-icons white-text">assessment</i>Desempenho</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'cadastro_list' %}"  class="white-text"><i class="material-icons white-text">edit</i>Editar Dados</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
          {% if user.is_staff %}
-        <li ><a href="{% url 'lista_workshop_admin' %}"  class="white-text">
-            <i class="material-icons">list</i>Cadastrar Workshop</a></li>
-        {% endif %}
-
-        <li ><a href="{% url 'listar_workshop_desempenho' %}" class="white-text">
-            <i class="material-icons">assessment</i>Desempenho</a></li>
-
-        {% if user.is_staff %}
-        <li ><a href="" class="white-text">
-            <i class="material-icons md-dark">local_printshop</i>Relatório</a></li>
-        {% endif %}
-
-        <li ><a href="{% url 'cadastro_list' %}"  class="white-text">
-            <i class="material-icons">edit</i>Editar Dados</a></li>
-
-        {% if user.is_staff %}
-        <li ><a class='dropdown-trigger white-text' href="{% url 'users' %}" data-target='cancelar'>
-            <i class="material-icons">remove_circle</i>Cancelar Cadastro<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li >
+                <a href="{% url 'lista_workshop_admin' %}"  class="white-text"><i class="material-icons">list</i><strong>Cadastrar Workshop</strong></a>
+            </li>
         {% endif %}
 
         {% if user.is_staff %}
-        <li ><a href=""  class="white-text">
-            <i class="material-icons">people</i>Gerar Equipes</a></li>
+            <li><a href="" class="white-text">
+                <i class="material-icons md-dark">local_printshop</i><strong>Relatório</strong></a></li>
+            <li>
+        {% endif %}
+        {% if user.is_staff %}
+                <div class="collapsible-header margin-colap">
+                     <i class="material-icons">remove_circle</i><strong class="white-text margin-colap">Cancelar Cadastro</strong><i class="material-icons right">arrow_drop_down</i></a>
+                </div>
+                <div class="collapsible-body drop-sid">
+                    <ul class="colap-sid">
+                        <li>
+                            <a href="{% url 'extensionista_list' %}" class="white-text"><i class="material-icons md-dark white-text">list</i>Extensionistas</a>
+                        </li>
+                        <li>
+                                <a href="{% url 'professor_list' %}" class="white-text"><i class="material-icons md-dark white-text ">list</i>Veteranos</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         {% endif %}
 
+        {% if user.is_staff %}
+            <li>
+                <a href=""  class="white-text"><i class="material-icons">people</i><strong>Gerar Equipes</strong></a>
+            </li>
+        {% endif %}
 
-      </div>
     </ul>
-    <ul  id='cancelar' class='col s12 left drop-sid dropdown-content'>
-        <li ><a href="{% url 'extensionista_list' %}" class="white-text">
-            <i class="material-icons md-dark">list</i>Extensionistas</a>
-        </li>
-        <li ><a href="{% url 'professor_list' %}" class="white-text">
-            <i class="material-icons md-dark">list</i>Veteranos</a>
-        </li>
-    </ul>
+</div>
 
 
     <!--Início do main contendo a base django-->

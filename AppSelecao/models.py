@@ -132,6 +132,21 @@ class Extensionista(models.Model):
     espera_8 = models.CharField(max_length=200, verbose_name='Participar de Produção Científica', null=True)
     desempenho = models.BooleanField(null=True, default=False, verbose_name='Destaque')
     comentario = models.TextField(max_length=1000, verbose_name='Comentário')
+    segunda = models.BooleanField(null=True, verbose_name='Segunda-Feira')
+    terca = models.BooleanField(null=True, verbose_name='Terça-Feira')
+    quarta = models.BooleanField(null=True, verbose_name='Quarta-Feira')
+    quinta = models.BooleanField(null=True, verbose_name='Quinta-Feira')
+    sexta = models.BooleanField(null=True, verbose_name='Sexta-Feira')
+    segunda_saida = models.BooleanField(null=True, verbose_name='Saída Segunda-Feira')
+    terca_saida = models.BooleanField(null=True, verbose_name='Saída Terça-Feira')
+    quarta_saida = models.BooleanField(null=True, verbose_name='Saída Quarta-Feira')
+    quinta_saida = models.BooleanField(null=True, verbose_name='Saída Quinta-Feira')
+    sexta_saida = models.BooleanField(null=True, verbose_name='Saída Sexta-Feira')
+    segunda_justificado = models.BooleanField(null=True, verbose_name='Justificativa Segunda-Feira')
+    terca_justificado = models.BooleanField(null=True, verbose_name='Justificativa Terça-Feira')
+    quarta_justificado = models.BooleanField(null=True, verbose_name='Justificativa Quarta-Feira')
+    quinta_justificado = models.BooleanField(null=True, verbose_name='Justificativa Quinta-Feira')
+    sexta_justificado = models.BooleanField(null=True, verbose_name='Justificativa Sexta-Feira')
 
 
     def __str__(self):

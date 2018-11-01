@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
     <div class="col-lg-12">
     <h2>Alunos do {{ workshop }}</h2>
     <table class="table">
@@ -9,19 +10,26 @@
           <th>Matrícula do Aluno</th>
         </tr>
       </thead>
-      <!--{% for aluno in aluno %}
+      {% for aluno in aluno %}
         <tr>
-            <td><a href="{% url 'frequencia_update' frequencia.pk %}">{{ aluno.nome_completo }}</a></td>
+            <td><a href="{% url 'presenca' aluno.pk %}">{{ aluno.nome_completo }}</a></td>
           <td>{{ aluno.matricula_extensionista }}</td>
         </tr>
-      {% endfor %}-->
-        {% for frequencia in frequencias %}
+      {% endfor %}
+
+        <!--{% for frequencia in frequencias %}
+        <form type="POST" enctype="multipart/form-data">{% csrf_token %}
         <tr>
             <td>{{frequencia.frequencia_extensionista.nome_completo}}</td>
             <td>{{frequencia.frequencia_extensionista.workshop_extensionista.nome_workshop}}</td>
-            <td>{{frequenciaWorkshopForm}}</td>
+            <!--<td>{{frequenciaWorkshopForm}}</td>
+            {{form}}
         </tr>
-        {% endfor %}
+            <button type="submit">Salvar</button>
+        </form>
+        {% endfor %}-->
+
     </table>
 </div>
+
 {% endblock %}

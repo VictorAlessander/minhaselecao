@@ -23,5 +23,12 @@ urlpatterns = [
     path('lista_workshop_desempenho/', listar_workshop_desempenho, name='listar_workshop_desempenho'),
     path('lista_alunos_workshop/<int:id>/', listar_alunos_desempenho, name='listar_alunos_desempenho'),
     path('desempenho_form/<int:id>', desempenho_update , name='desempenho_form'),
-    path('deletar_workshop/<int:id>', workshop_delete, name='deletar_workshop')
+    path('deletar_workshop/<int:id>', workshop_delete, name='deletar_workshop'),
+    path('perfil/<int:id>', perfil, name='perfil'),
+    path('testedeequipes/', equipes, name='equipe'),
+
+
+    path('testefrequencia/<int:id>', frequencia_nova, name='frequenciateste'),
+    path('frequenciadia/', frequencia_dia, name='frequenciadia'),
+    path('frequenciateste2/', frequencia_oquequiser, name='frequenciateste2')
 ]

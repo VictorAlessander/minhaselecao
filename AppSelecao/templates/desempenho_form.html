@@ -7,6 +7,10 @@
 </head>
 <body>
     <form method="POST" enctype="multipart/form-data">
+        {{ aluno2.nome_completo }}
+        {{ aluno2.matricula_extensionista }}
+        {{ aluno2.curso }}
+        {{ aluno2.periodo }}
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Salvar</button>

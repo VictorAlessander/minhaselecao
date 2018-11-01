@@ -95,6 +95,32 @@ class FrequenciaWorkshopForm(ModelForm):
             'sexta_justificado': forms.CheckboxInput(),
         }
 
+class FrequenciaForm(ModelForm):
+    class Meta:
+        model = Extensionista
+        fields = ['segunda', 'segunda_saida','segunda_justificado',  'terca', 'terca_saida','terca_justificado',
+                  'quarta', 'quarta_saida','quarta_justificado', 'quinta', 'quinta_saida', 'quinta_justificado', 'sexta', 'sexta_saida',
+                    'sexta_justificado']
+
+        widgets = {
+            'segunda': forms.CheckboxInput(),
+            'terca': forms.CheckboxInput(),
+            'quarta': forms.CheckboxInput(),
+            'quinta': forms.CheckboxInput(),
+            'sexta': forms.CheckboxInput(),
+            'segunda_saida': forms.CheckboxInput(),
+            'terca_saida': forms.CheckboxInput(),
+            'quarta_saida': forms.CheckboxInput(),
+            'quinta_saida': forms.CheckboxInput(),
+            'sexta_saida': forms.CheckboxInput(),
+            'segunda_justificado': forms.CheckboxInput(),
+            'terca_justificado': forms.CheckboxInput(),
+            'quarta_justificado': forms.CheckboxInput(),
+            'quinta_justificado': forms.CheckboxInput(),
+            'sexta_justificado': forms.CheckboxInput(),
+        }
+
+
 class DesmepenhoForm(ModelForm):
     class Meta:
         model = Extensionista
@@ -103,10 +129,6 @@ class DesmepenhoForm(ModelForm):
         widgets = {
             'desempenho': forms.CheckboxInput(),
         }
-
-
-
-
 
 
 
