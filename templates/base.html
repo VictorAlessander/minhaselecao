@@ -33,7 +33,7 @@
         </ul>
         <ul class="show-on-medium-and-down">
           <li>
-            <a  data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a  data-target="slide-out" class="sidenav-trigger menu-side"><i class="material-icons">menu</i></a>
           </li>
         </ul>
       </div>
@@ -57,19 +57,19 @@
         </div>
         <hr>
         <li>
-            <div class="collapsible-header margin-colap">
-                 <i class="material-icons">people</i><strong class="white-text margin-colap">Extensionistas</strong><i class="material-icons right">arrow_drop_down</i></a>
+            <div class="collapsible-header">
+                 <i class="material-icons margin-colap">people</i><strong class="white-text margin-colap">Extensionistas</strong><i class="material-icons right">arrow_drop_down</i></a>
             </div>
             <div class="collapsible-body drop-sid">
                 <ul class="colap-sid">
                     <li>
-                        <a href="{% url 'frequencia' %}"  class="white-text"><i class="material-icons white-text">check</i>frequência</a>
+                        <a href="{% url 'frequencia' %}"  class="white-text"><i class="material-icons white-text">check</i>Frequência</a>
                     </li>
                     <li>
                         <a href="{% url 'listar_workshop_desempenho' %}" class="white-text"><i class="material-icons white-text">assessment</i>Desempenho</a>
                     </li>
                     <li>
-                        <a href="{% url 'cadastro_list' %}"  class="white-text"><i class="material-icons white-text">edit</i>Editar Dados</a>
+                        <a href="{% url 'cadastro_list' %}"  class="white-text"><i class="material-icons white-text">edit</i>Editar contas</a>
                     </li>
                 </ul>
             </div>
@@ -86,8 +86,8 @@
             <li>
         {% endif %}
         {% if user.is_staff %}
-                <div class="collapsible-header margin-colap">
-                     <i class="material-icons">remove_circle</i><strong class="white-text margin-colap">Cancelar Cadastro</strong><i class="material-icons right">arrow_drop_down</i></a>
+                <div class="collapsible-header">
+                     <i class="material-icons margin-colap">remove_circle</i><strong class="white-text margin-colap">Cancelar Cadastro</strong><i class="material-icons right">arrow_drop_down</i></a>
                 </div>
                 <div class="collapsible-body drop-sid">
                     <ul class="colap-sid">

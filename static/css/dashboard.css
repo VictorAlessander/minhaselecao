@@ -14,6 +14,7 @@ main {
 /*Cor da sidebar*/
 .sidenav{
 	background-color: #2a4663;
+
 }
 
 .colap-sid{
@@ -40,6 +41,10 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 		height: 30px !important;
 		line-height: 30px !important;
 	}
+}
+.menu-side{
+	    height: auto;
+}
 
 hr{
 	border-color: #607d8b; 
@@ -57,7 +62,7 @@ a:hover.linkcor{
 	color:; red;
 }
 
-/*alinhamento das páginas dentro da dashboard */
+/*alinhamento das pï¿½ginas dentro da dashboard */
 .margin-dash{
     margin-left: 310px;
 }
@@ -65,7 +70,7 @@ a:hover.linkcor{
 .margin-dash-nomal{
     margin-left: 100px;
 }
-/*Alinhamento dos botões colapsados*/
+/*Alinhamento dos botï¿½es colapsados*/
 .margin-colap{
     margin-left: 14px;
 }

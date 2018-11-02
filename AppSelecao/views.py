@@ -235,7 +235,7 @@ def workshop_delete(request, id):
 @login_required()
 def perfil(request, id):
     veterano = UserCadastro.objects.get(pk=id)
-    aluno = UserCadastro.objects.filter(id=veterano)
+    aluno = UserCadastro.objects.filter(id=id)
 
     return render(request, 'perfil.html', {'veterano':veterano, 'aluno':aluno})
 
@@ -316,7 +316,18 @@ def equipes(resquest):
     print(workshopsFilterTrue)
     print(workshopsFilterFalse)
 
-    return render(resquest, 'equipe.html')
+
+    azul = workshopsFilterTrue[workshop]
+    print(azul)
+
+
+    for i in workshopsFilterTrue:
+        print(i)
+
+    for j in azul:
+        print(j)
+
+    return render(resquest, 'equipe.html', {'workshopsFilterTrue':workshopsFilterTrue, 'workshopsFilterFalse':workshopsFilterFalse, 'alunos':alunos, 'i':i})
 
 
 
